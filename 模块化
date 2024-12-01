@@ -1,0 +1,82 @@
+#include <stdio.h>
+
+int main() {
+	int i, n, cnt = 0;
+		scanf("%d", &n);
+	int grade[n];
+	char name[n][10];
+	do {
+		scanf("%d", &i);
+		
+		switch (i) {
+			case 1:
+			
+			
+				while (cnt < n) {
+					scanf("%s", name[cnt]);
+					scanf("%d", &grade[cnt]);
+					cnt++;
+				
+				}
+				printf("%d records were input!\n", n);
+			
+			
+			
+				break;
+			case 2: {
+				int i, j, t;
+				char c;
+				for (i = 0; i < n - 1; i++) {
+					
+					for (j = 0; j < n - 1 - i; j++) {
+						if (grade[j] < grade[j + 1]) {
+							t = grade[j];
+							grade[j] = grade[j + 1];
+							grade[j + 1] = t;
+						for(int m=0;m<10;m++){
+							c=name[j+1][m];
+							name[j+1][m]=name[j][m];
+							name[j][m]=c;
+							
+					
+						}
+							
+						}
+					}
+				}
+				printf("Reorder finished!\n");
+				break;
+			}
+			case 3: {
+				int i;
+				for (i = 0; i < n; i++) {
+					printf("%s ", name[i]);
+					printf("%d\n", grade[i]);
+				}
+				
+				break;
+			}
+			case 4: {
+				int x, left = 0, right = n - 1, mid;
+				scanf("%d", &x);
+				while (right >= left) {
+					mid = (left + right) / 2;
+					if (x < grade[mid]) {
+						right = mid - 1;
+					} else if (x > grade[mid]) {
+						left = mid + 1;
+					} else if (x == grade[mid]) {
+						printf("%s %d", name[mid], grade[mid]);
+					} else {
+						printf("notfoud!\n");
+					}
+				}
+				break;
+			}
+			default:
+				break;
+		}
+
+
+	} while (i != 0);
+}
